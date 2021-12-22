@@ -56,6 +56,10 @@ public class homeGUI  extends JFrame{
     private JButton btn_answer_def_D;
     private JLabel t_qt_slang;
     private JLabel t_qt_def;
+    private String question_Slang;
+    private String answer_Slang;
+    private String question_Def;
+    private String answer_Def;
 
     private Slang slang;
     HashMap<String, ArrayList<String>> History;
@@ -246,6 +250,249 @@ public class homeGUI  extends JFrame{
 
             }
         });
+
+        btn_quiz_slang.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<String> keysAsArray = new ArrayList<String>(slang.Dictionary.keySet());
+                Random r = new Random();
+                String random_key =keysAsArray.get(r.nextInt(keysAsArray.size()));
+                ArrayList<String> random_defs=slang.Dictionary.get(random_key);
+                answer_Slang=random_defs.get(0);
+                random_defs.remove(0);
+
+                for (String s:random_defs)
+                    answer_Slang=answer_Slang.concat(" or "+s);
+
+                List<ArrayList<String>> valuesAsArray = new ArrayList<ArrayList<String>>(slang.Dictionary.values());
+
+                ArrayList<String> random_answer=valuesAsArray.get(r.nextInt(valuesAsArray.size()));
+                String answer_1=random_answer.get(0);
+                random_answer.remove(0);
+                for (String s:random_answer)
+                    answer_1=answer_1.concat(" or "+s);
+
+                random_answer=valuesAsArray.get(r.nextInt(valuesAsArray.size()));
+                String answer_2=random_answer.get(0);
+                random_answer.remove(0);
+                for (String s:random_answer)
+                    answer_2=answer_2.concat(" or "+s);
+
+                random_answer=valuesAsArray.get(r.nextInt(valuesAsArray.size()));
+                String answer_3=random_answer.get(0);
+                random_answer.remove(0);
+                for (String s:random_answer)
+                    answer_3=answer_3.concat(" or "+s);
+
+                List<String> answers=new ArrayList<String>(List.of(new String[]{answer_1, answer_2, answer_3, answer_Slang}));
+                t_qt_slang.setText("Choose definition for "+random_key);
+                Collections.shuffle(answers);
+
+                btn_answer_slang_A.setText(answers.get(0));
+                btn_answer_slang_B.setText(answers.get(1));
+                btn_answer_slang_C.setText(answers.get(2));
+                btn_answer_slang_D.setText(answers.get(3));
+            }
+        });
+
+        btn_answer_slang_A.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result=btn_answer_slang_A.getText();
+                if (result.isEmpty())
+                    JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
+                else
+                {
+                    if (result.equals(answer_Slang)){
+                        JOptionPane.showMessageDialog(null, "Your answer is right !!!",
+                                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                        btn_quiz_slang.doClick();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
+                                "WARNING", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        btn_answer_slang_B.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result=btn_answer_slang_B.getText();
+                if (result.isEmpty())
+                    JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
+                else
+                {
+                    if (result.equals(answer_Slang)){
+                        JOptionPane.showMessageDialog(null, "Your answer is right !!!",
+                                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                        btn_quiz_slang.doClick();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
+                                "WARNING", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        btn_answer_slang_C.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result=btn_answer_slang_C.getText();
+                if (result.isEmpty())
+                    JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
+                else
+                {
+                    if (result.equals(answer_Slang)){
+                        JOptionPane.showMessageDialog(null, "Your answer is right !!!",
+                                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                        btn_quiz_slang.doClick();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
+                                "WARNING", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        btn_answer_slang_D.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result=btn_answer_slang_D.getText();
+                if (result.isEmpty())
+                    JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
+                else
+                {
+                    if (result.equals(answer_Slang)){
+                        JOptionPane.showMessageDialog(null, "Your answer is right !!!",
+                                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                        btn_quiz_slang.doClick();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
+                                "WARNING", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        btn_quiz_def.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<String> keysAsArray = new ArrayList<String>(slang.Dictionary.keySet());
+                Random r = new Random();
+                answer_Def =keysAsArray.get(r.nextInt(keysAsArray.size()));
+
+                ArrayList<String> random_defs=slang.Dictionary.get(answer_Def);
+                String question=random_defs.get(0);
+                random_defs.remove(0);
+
+                for (String s:random_defs)
+                    question=question.concat(" or "+s);
+
+
+                String answer_1=keysAsArray.get(r.nextInt(keysAsArray.size()));
+                String answer_2=keysAsArray.get(r.nextInt(keysAsArray.size()));
+                String answer_3=keysAsArray.get(r.nextInt(keysAsArray.size()));
+
+                List<String> answers=new ArrayList<String>(List.of(new String[]{answer_1, answer_2, answer_3, answer_Def}));
+                t_qt_def.setText("Choose slang word for definition: "+question);
+                Collections.shuffle(answers);
+
+                btn_answer_def_A.setText(answers.get(0));
+                btn_answer_def_B.setText(answers.get(1));
+                btn_answer_def_C.setText(answers.get(2));
+                btn_answer_def_D.setText(answers.get(3));
+            }
+        });
+
+        btn_answer_def_A.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result=btn_answer_def_A.getText();
+                if (result.isEmpty())
+                    JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
+                else
+                {
+                    if (result.equals(answer_Def)){
+                        JOptionPane.showMessageDialog(null, "Your answer is right !!!",
+                                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                        btn_quiz_def.doClick();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
+                                "WARNING", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        btn_answer_def_B.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result=btn_answer_def_B.getText();
+                if (result.isEmpty())
+                    JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
+                else
+                {
+                    if (result.equals(answer_Def)){
+                        JOptionPane.showMessageDialog(null, "Your answer is right !!!",
+                                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                        btn_quiz_def.doClick();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
+                                "WARNING", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        btn_answer_def_C.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result=btn_answer_def_C.getText();
+                if (result.isEmpty())
+                    JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
+                else
+                {
+                    if (result.equals(answer_Def)){
+                        JOptionPane.showMessageDialog(null, "Your answer is right !!!",
+                                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                        btn_quiz_def.doClick();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
+                                "WARNING", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        btn_answer_def_D.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result=btn_answer_def_D.getText();
+                if (result.isEmpty())
+                    JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
+                else
+                {
+                    if (result.equals(answer_Def)){
+                        JOptionPane.showMessageDialog(null, "Your answer is right !!!",
+                                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                        btn_quiz_def.doClick();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
+                                "WARNING", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
     }
 
 }
