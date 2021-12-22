@@ -44,6 +44,18 @@ public class homeGUI  extends JFrame{
     private JLabel t_random_slang;
     private JList list_def_random;
     private JTabbedPane tabbedPane4;
+    private JButton btn_quiz_slang;
+    private JButton btn_answer_slang_A;
+    private JButton btn_answer_slang_B;
+    private JButton btn_answer_slang_C;
+    private JButton btn_answer_slang_D;
+    private JButton btn_quiz_def;
+    private JButton btn_answer_def_A;
+    private JButton btn_answer_def_B;
+    private JButton btn_answer_def_C;
+    private JButton btn_answer_def_D;
+    private JLabel t_qt_slang;
+    private JLabel t_qt_def;
 
     private Slang slang;
     HashMap<String, ArrayList<String>> History;
