@@ -81,9 +81,13 @@ public class homeGUI  extends JFrame{
         this.list_history_slang.setModel(history_slang_model);
         this.list_delete.setModel(delete_model);
 
+
+        JFrame.setDefaultLookAndFeelDecorated(true);
+
         this.setContentPane(homePane);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(800,600);
+
         this.setVisible(true);
 
         btn_findByDef.addActionListener(new ActionListener() {
@@ -148,6 +152,7 @@ public class homeGUI  extends JFrame{
             }
         });
 
+        final String[] oldSlangKey = new String[1];
         btn_find_edit_slang.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -158,8 +163,8 @@ public class homeGUI  extends JFrame{
                 }
 
                 else {
-                    t_edit_slang.setText(edt_find_edit_slang.getText());
-                    edt_edit_def.setText("");
+                    edt_edit_slang.setText(edt_find_edit_slang.getText());
+                    oldSlangKey[0] =edt_find_edit_slang.getText();
                     for (String r: result){
                         edt_edit_def.append(r+"\n");
                     }
@@ -171,12 +176,40 @@ public class homeGUI  extends JFrame{
         btn_edit_slang.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] lines=edt_edit_def.getText().split("\n");
-                slang.Dictionary.put(t_edit_slang.getText(),new ArrayList<String>(List.of(lines)));
+                String[] lines = edt_edit_def.getText().split("\n");
+                if (oldSlangKey[0].equals(edt_edit_slang.getText())) {
+                            slang.Dictionary.put(edt_edit_slang.getText(), new ArrayList<String>(List.of(lines)));
 
-                JOptionPane.showMessageDialog(null, "Update successfully",
-                        "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Update successfully",
+                            "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                            oldSlangKey[0]="";
                 }
+                else
+                {
+                    if (!slang.Dictionary.containsKey(edt_edit_slang.getText())) {
+                        slang.Dictionary.put(edt_edit_slang.getText(),new ArrayList<String>(List.of(lines)));
+                        slang.Dictionary.remove(oldSlangKey[0]);
+                        JOptionPane.showMessageDialog(null, "Update successfully",
+                                "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                        oldSlangKey[0]="";
+                    }
+                    else {
+                        int messageType = JOptionPane.WARNING_MESSAGE;
+                        String[] options = {"Overwrite", "Cancel"};
+                        int code = JOptionPane.showOptionDialog(null,
+                                "This slang existed. Do you want to overwrite this?",
+                                "Option ", 0, messageType,
+                                null, options, null);
+                        if (code==0){
+                            slang.Dictionary.put(edt_edit_slang.getText(),new ArrayList<String>(List.of(lines)));
+                            slang.Dictionary.remove(oldSlangKey[0]);
+                            JOptionPane.showMessageDialog(null, "Update successfully",
+                                    "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                            oldSlangKey[0]="";
+                        }
+                    }
+                }
+            }
         });
 
         btn_find_delete.addActionListener(new ActionListener() {
