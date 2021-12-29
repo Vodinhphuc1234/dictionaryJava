@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * source
@@ -17,16 +18,10 @@ public class Slang {
     public Slang(String filepath) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filepath)));
         String line = br.readLine();
-        String word = null;
         while (line != null) {
             System.out.println(line);
             String[] information = line.split("`");
-            if (information.length > 1) {
-                Dictionary.put(information[0], new ArrayList<String>(List.of(information[1])));
-                word = information[0];
-            } else {
-                Dictionary.get(word).add(information[0]);
-            }
+            Dictionary.put(information[0], new ArrayList<String>(List.of(information[1].split(Pattern.quote("| ")))));
             line = br.readLine();
         }
     }

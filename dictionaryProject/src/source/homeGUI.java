@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * source
@@ -35,7 +36,7 @@ public class homeGUI  extends JFrame{
     private JTextArea edt_edit_def;
     private JButton btn_edit_slang;
     private JLabel t_edit_slang;
-    private JTextField edt_find_delete;
+    private JTextField edt_delete;
     private JButton btn_find_delete;
     private JList list_delete;
     private JButton btn_delete;
@@ -79,7 +80,7 @@ public class homeGUI  extends JFrame{
         this.list_history_def.setModel(history_def_model);
         this.list_slang.setModel(find_slang_model);
         this.list_history_slang.setModel(history_slang_model);
-        this.list_delete.setModel(delete_model);
+
 
 
         JFrame.setDefaultLookAndFeelDecorated(true);
@@ -100,7 +101,12 @@ public class homeGUI  extends JFrame{
                     for (String def: entry.getValue())
                     {
                         if (def.indexOf(edt_def.getText())>1){
-                            find_def_model.add(0,entry.getKey()+" = "+entry.getValue());
+                            find_def_model.add(0,"Slang word: "+entry.getKey());
+                            find_def_model.add(1,"Definitions: ");
+                            for (int i=0; i<entry.getValue().size();i++){
+                                find_def_model.add(i+2,"      -"+entry.getValue().get(i));
+                            }
+                            find_def_model.add(0,"");
                             history_def_model.add(0,entry.getKey()+" = "+entry.getValue());
                             break;
                         }
@@ -121,7 +127,11 @@ public class homeGUI  extends JFrame{
                 }
 
                 else {
-                    find_slang_model.add(0,""+edt_slang.getText()+" = "+result);
+                    find_slang_model.add(0,"Slang word: "+edt_slang.getText());
+                    find_slang_model.add(1,"Definitions: ");
+                    for (int i=0; i<result.size();i++){
+                        find_slang_model.add(i+2,"      -"+result.get(i));
+                    }
                     history_slang_model.add(0,""+edt_slang.getText()+" = "+result);
                 }
                 edt_slang.setText("");
@@ -156,6 +166,7 @@ public class homeGUI  extends JFrame{
         btn_find_edit_slang.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                edt_edit_def.setText("");
                 ArrayList<String> result=slang.Dictionary.get(edt_find_edit_slang.getText());
                 if (result==null) {
                     JOptionPane.showMessageDialog(null, "Not found your Slang",
@@ -192,6 +203,7 @@ public class homeGUI  extends JFrame{
                         JOptionPane.showMessageDialog(null, "Update successfully",
                                 "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
                         oldSlangKey[0]="";
+
                     }
                     else {
                         int messageType = JOptionPane.WARNING_MESSAGE;
@@ -212,21 +224,36 @@ public class homeGUI  extends JFrame{
             }
         });
 
-        btn_find_delete.addActionListener(new ActionListener() {
+        btn_delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                delete_model.clear();
-                ArrayList<String> result=slang.Dictionary.get(edt_find_delete.getText());
+                ArrayList<String> result=slang.Dictionary.get(edt_delete.getText());
                 if (result==null) {
-                    delete_model.add(0, "Not found definition for " + edt_find_delete.getText());
+                    JOptionPane.showMessageDialog(null, edt_delete.getText()+" is not found in Dictionary",
+                            "WARNING", JOptionPane.WARNING_MESSAGE);
                 }
 
                 else {
-                    delete_model.add(0,""+edt_find_delete.getText()+" = "+result);
+                    String slangAndDef=edt_delete.getText()+": "+result;
+                    int messageType = JOptionPane.WARNING_MESSAGE;
+                    String[] options = {"Confirm", "Cancel"};
+                    int code = JOptionPane.showOptionDialog(null,
+                            slangAndDef+"\n"+"Are you sure for deleting this slang word ?",
+                            "Option ", 0, messageType,
+                            null, options, null);
+
+                    if (code==0)
+                    {
+                        slang.Dictionary.remove(edt_delete.getText().toString());
+                        JOptionPane.showMessageDialog(null, "Delete Successfully.",
+                                "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                        edt_delete.setText("");
+                    }
                 }
-                edt_find_delete.setText("");
             }
         });
+
+
 
         btn_reset.addActionListener(new ActionListener() {
             @Override
@@ -255,17 +282,13 @@ public class homeGUI  extends JFrame{
                     while (line != null) {
                         System.out.println(line);
                         String[] information = line.split("`");
-                        if (information.length > 1) {
-                            slang.Dictionary.put(information[0], new ArrayList<String>(List.of(information[1])));
-                            word = information[0];
-                        } else {
-                            slang.Dictionary.get(word).add(information[0]);
-                        }
+                        slang.Dictionary.put(information[0], new ArrayList<String>(List.of(information[1].split(Pattern.quote("| ")))));
                         try {
                             line = br.readLine();
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
+
                     }
                 }
             }
