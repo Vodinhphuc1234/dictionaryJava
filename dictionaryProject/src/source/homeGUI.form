@@ -620,7 +620,7 @@
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value=""/>
+                              <text value=" "/>
                             </properties>
                           </component>
                           <component id="823ac" class="javax.swing.JButton" binding="btn_answer_slang_C">
@@ -628,7 +628,7 @@
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value=""/>
+                              <text value=" "/>
                             </properties>
                           </component>
                           <component id="72616" class="javax.swing.JButton" binding="btn_answer_slang_B">
@@ -636,7 +636,7 @@
                               <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value=""/>
+                              <text value=" "/>
                             </properties>
                           </component>
                           <component id="c9fc1" class="javax.swing.JButton" binding="btn_answer_slang_D">
@@ -644,7 +644,7 @@
                               <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value=""/>
+                              <text value=" "/>
                             </properties>
                           </component>
                         </children>
@@ -714,7 +714,7 @@
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value=""/>
+                              <text value=" "/>
                             </properties>
                           </component>
                           <component id="5d637" class="javax.swing.JButton" binding="btn_answer_def_C">
@@ -722,7 +722,7 @@
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value=""/>
+                              <text value=" "/>
                             </properties>
                           </component>
                           <component id="2f6f8" class="javax.swing.JButton" binding="btn_answer_def_B">
@@ -730,7 +730,7 @@
                               <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value=""/>
+                              <text value=" "/>
                             </properties>
                           </component>
                           <component id="cc2f3" class="javax.swing.JButton" binding="btn_answer_def_D">
@@ -738,7 +738,7 @@
                               <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <text value=""/>
+                              <text value=" "/>
                             </properties>
                           </component>
                         </children>

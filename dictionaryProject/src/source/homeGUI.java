@@ -3,6 +3,8 @@ package source;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -355,7 +357,7 @@ public class homeGUI  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String result=btn_answer_slang_A.getText();
-                if (result.isEmpty())
+                if (result.equals(" "))
                     JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
                             "WARNING", JOptionPane.WARNING_MESSAGE);
                 else
@@ -376,7 +378,7 @@ public class homeGUI  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String result=btn_answer_slang_B.getText();
-                if (result.isEmpty())
+                if (result.equals(" "))
                     JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
                             "WARNING", JOptionPane.WARNING_MESSAGE);
                 else
@@ -397,7 +399,7 @@ public class homeGUI  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String result=btn_answer_slang_C.getText();
-                if (result.isEmpty())
+                if (result.equals(" "))
                     JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
                             "WARNING", JOptionPane.WARNING_MESSAGE);
                 else
@@ -418,7 +420,7 @@ public class homeGUI  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String result=btn_answer_slang_D.getText();
-                if (result.isEmpty())
+                if (result.equals(" "))
                     JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
                             "WARNING", JOptionPane.WARNING_MESSAGE);
                 else
@@ -469,7 +471,7 @@ public class homeGUI  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String result=btn_answer_def_A.getText();
-                if (result.isEmpty())
+                if (result.equals(" "))
                     JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
                             "WARNING", JOptionPane.WARNING_MESSAGE);
                 else
@@ -490,7 +492,7 @@ public class homeGUI  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String result=btn_answer_def_B.getText();
-                if (result.isEmpty())
+                if (result.equals(" "))
                     JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
                             "WARNING", JOptionPane.WARNING_MESSAGE);
                 else
@@ -511,7 +513,7 @@ public class homeGUI  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String result=btn_answer_def_C.getText();
-                if (result.isEmpty())
+                if (result.equals(" "))
                     JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
                             "WARNING", JOptionPane.WARNING_MESSAGE);
                 else
@@ -532,7 +534,7 @@ public class homeGUI  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String result=btn_answer_def_D.getText();
-                if (result.isEmpty())
+                if (result.equals(" "))
                     JOptionPane.showMessageDialog(null, "You should generate quiz to start quiz",
                             "WARNING", JOptionPane.WARNING_MESSAGE);
                 else
@@ -546,6 +548,66 @@ public class homeGUI  extends JFrame{
                         JOptionPane.showMessageDialog(null, "Your answer is wrong. Choose another one",
                                 "WARNING", JOptionPane.WARNING_MESSAGE);
                 }
+            }
+        });
+
+        this.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int messageType = JOptionPane.INFORMATION_MESSAGE;
+                String[] options = {"Yes", "No"};
+                int code = JOptionPane.showOptionDialog(null,
+                        "Do you want to save all changes to your file ?",
+                        "Option ", 0, messageType,
+                        null, options, null);
+                if (code==0){
+                    try {
+                        BufferedWriter bw=new BufferedWriter(new FileWriter(
+                                "D:\\semester 1 - 3nd year\\java\\PA_01_DictionaryApp (1)\\PA_01_DictionaryApp\\slang.txt"));
+                        for (Map.Entry<String, ArrayList<String>> entry: slang.Dictionary.entrySet()){
+                            String line=entry.getKey()+"`";
+                            for (String def: entry.getValue()){
+                                line=line+"| "+def;
+                            }
+                            bw.write(line);
+                            bw.newLine();
+                            bw.flush();
+                        }
+                        bw.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
             }
         });
 
