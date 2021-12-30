@@ -59,6 +59,7 @@ public class homeGUI  extends JFrame{
     private JButton btn_answer_def_D;
     private JLabel t_qt_slang;
     private JLabel t_qt_def;
+    private JButton btn_choosefile;
     private String question_Slang;
     private String answer_Slang;
     private String question_Def;
@@ -270,7 +271,7 @@ public class homeGUI  extends JFrame{
                 if (code==0){
                     BufferedReader br = null;
                     try {
-                        br = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\semester 1 - 3nd year\\java\\PA_01_DictionaryApp (1)\\PA_01_DictionaryApp\\slang.txt")));
+                        br = new BufferedReader(new InputStreamReader(new FileInputStream(slang.filepath)));
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
@@ -282,7 +283,6 @@ public class homeGUI  extends JFrame{
                     }
                     String word = null;
                     while (line != null) {
-                        System.out.println(line);
                         String[] information = line.split("`");
                         slang.Dictionary.put(information[0], new ArrayList<String>(List.of(information[1].split(Pattern.quote("| ")))));
                         try {
@@ -567,13 +567,13 @@ public class homeGUI  extends JFrame{
                         null, options, null);
                 if (code==0){
                     try {
-                        BufferedWriter bw=new BufferedWriter(new FileWriter(
-                                "D:\\semester 1 - 3nd year\\java\\PA_01_DictionaryApp (1)\\PA_01_DictionaryApp\\slang.txt"));
+                        BufferedWriter bw=new BufferedWriter(new FileWriter(slang.filepath));
                         for (Map.Entry<String, ArrayList<String>> entry: slang.Dictionary.entrySet()){
-                            String line=entry.getKey()+"`";
-                            for (String def: entry.getValue()){
-                                line=line+"| "+def;
+                            String line=entry.getKey()+"`"+entry.getValue().get(0);
+                            for (int i=1; i<entry.getValue().size();i++){
+                                line=line+"| "+entry.getValue().get(i);
                             }
+
                             bw.write(line);
                             bw.newLine();
                             bw.flush();
@@ -610,6 +610,7 @@ public class homeGUI  extends JFrame{
 
             }
         });
+
 
     }
 
