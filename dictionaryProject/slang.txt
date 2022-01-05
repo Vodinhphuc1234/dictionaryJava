@@ -459,7 +459,7 @@ SYA`See You
 BWT`Misspelling of BTW
 SYG`Shut Your Gob
 SYF`Shut Your Face
-BWW`Buffalo Wild Wings 
+BWW`Buffalo Wild Wings
 CACHAI`Do you understand?
 SYK`So You Know
 SYM`Shut Your Mouth| So You Mad?
@@ -584,7 +584,7 @@ CBD`Cute But Dumb
 CBC`Canadian Broadcasting Corporation
 CBH`Child Bearing Hips
 CBI`Californian Bureau of Investigation| Confederation of British Industry
-CBR`Captive Bead Ring 
+CBR`Captive Bead Ring
 ELI5`Explain Like I'm 5
 CBT`Cognitive Behavioural Therapy
 CBS`Can't Be Stuffed
@@ -1364,7 +1364,7 @@ FIZZLE`Fool
 WAAM`What's going on| what's up
 DIC`Do I Care?
 WAAN`Want
-CC`Credit Card| Carbon Copy| Crowd Control
+CC`Credit Card| Carbon Copy| Crowd Control| Country Code
 CD`Compact Disc| Cross Dresser
 SETI`Search For Extraterrestrial Intelligence
 CE`Casual Encounters
@@ -2838,7 +2838,7 @@ POTY`Post Of The Year
 WSA`Wow, Strong Arms
 G2R`Got To Run
 BUSTED`Very Ugly| Caught
-POTW`Patient of the Week 
+POTW`Patient of the Week
 G2S`Go To Sleep
 BWOI`Friend| buddy
 WSM`Woman Seeking Man
@@ -3250,7 +3250,7 @@ LSHMBH`Laughing So Hard My Belly Hurts
 Y2K`Year 2000
 H1B`US employment visa
 GPA`Grade-Point Average
-GPC`Generic Pack of Cigarettes| Get/Post/Cookie 
+GPC`Generic Pack of Cigarettes| Get/Post/Cookie
 GPL`General Public License
 GPS`Global Positioning System
 GPU`Graphics Processing Unit
@@ -3603,7 +3603,7 @@ GRULE`Hard work| nuisance
 FTUW`For The Ultimate Win
 BTWITIAILWU`By The Way, I Think I Am In Love With You
 HLV`Hasta La Vista
-8-)`Cool 
+8-)`Cool
 GFWL`Games For Windows Live
 BTWITIAILWY`By The Way, I Think I Am In Love With You
 YNK`You Never Know
@@ -3646,7 +3646,7 @@ HOH`Head Over Heels| Hard Of Hearing
 HOG`Harley Owner Group
 GLEAK`Spit
 HON`Honey
-8-|`Nerdy 
+8-|`Nerdy
 HOP`Heroin
 HOT`Very good looking| sexy
 BHL8`Be Home Late
@@ -3868,7 +3868,7 @@ IBS`Irritable Bowel Syndrome
 IBU`Ibuprofen
 QOTSA`Queens Of The Stone Age (Band)
 IBW`I'll Be Waiting
-ICC`Ice Crown Citadel 
+ICC`Ice Crown Citadel
 BLARG`boredom
 ICB`I Can't Believe...
 ICE`Diamonds| Crystal meth| Kill
@@ -7254,7 +7254,7 @@ MESSRS`Messieurs| Mister
 RLZ`Rules
 RMA`Return Merchandise Authorization
 AKS`Ask
-CULO`Ass 
+CULO`Ass
 RME`Rolling My Eyes
 RML`Read My Lips
 ALA`In the style of
@@ -7470,7 +7470,7 @@ LOOL`Laughing Outlandishly Out Loud
 ATW`All The Way
 COCK UP`Mistake| mess
 ATX`Austin, Texas
-LOOT`Money 
+LOOT`Money
 IWHI`I Would Hit It
 RVR`Realm Versus Realm (MMORPG)
 AUD`Australian Dollar

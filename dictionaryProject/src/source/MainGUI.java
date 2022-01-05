@@ -49,14 +49,15 @@ public class MainGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 edt_slang.setText("");
                 model.clear();
-                for(Map.Entry<String,ArrayList<String>> entry: slang.Dictionary.entrySet())
+                for(Map.Entry<String, ArrayList<ArrayList<String>>> entry: slang.Dictionary.entrySet())
                 {
-                    for (String def: entry.getValue())
+                    for (ArrayList<String> defs: entry.getValue())
                     {
-
-                        if (def.indexOf(edt_definition.getText())>1){
-                            System.out.println(entry.getValue());
-                            model.add(0,entry.getKey()+" = "+entry.getValue());
+                        for (String def: defs) {
+                            if (def.indexOf(edt_definition.getText()) > 1) {
+                                System.out.println(entry.getValue());
+                                model.add(0, entry.getKey() + " = " + entry.getValue());
+                            }
                         }
                     }
                 }
@@ -65,16 +66,7 @@ public class MainGUI extends JFrame{
         btn_findBySlang.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                edt_definition.setText("");
-                model.clear();
-                ArrayList<String> result=slang.Dictionary.get(edt_slang.getText());
-                if (result==null) {
-                    model.add(0, "Not found definition for " + edt_slang.getText());
-                }
 
-                else {
-                    model.add(0,""+edt_slang.getText()+" = "+result);
-                }
             }
         });
     }
